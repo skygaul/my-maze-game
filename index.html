@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>미로 탈출 - 안개 속에서 길을 찾아라</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>미로 탈출</h1>
+      <p class="tagline">안개 속에서 길을 찾는 미로 탈출</p>
+    </header>
+
+    <div class="bar">
+      <label class="field">난이도
+        <select id="difficulty">
+          <option value="easy">쉬움 10×10</option>
+          <option value="medium" selected>보통 16×16</option>
+          <option value="hard">어려움 24×24</option>
+        </select>
+      </label>
+      <button id="fog-toggle" class="btn" aria-pressed="false">안개 OFF</button>
+      <button id="new-game" class="btn primary">새 미로</button>
+      <button id="restart" class="btn">다시 시작</button>
+    </div>
+
+    <div class="stats">
+      <span>⏱ <b id="time">00:00.0</b></span>
+      <span>👣 <b id="moves">0</b>칸</span>
+      <span>🏆 최고 <b id="best">-</b></span>
+    </div>
+
+    <canvas id="maze" aria-label="미로"></canvas>
+
+    <div class="dpad" aria-label="방향 버튼">
+      <button id="d-up" class="btn" aria-label="위">▲</button>
+      <button id="d-left" class="btn" aria-label="왼쪽">◀</button>
+      <button id="d-down" class="btn" aria-label="아래">▼</button>
+      <button id="d-right" class="btn" aria-label="오른쪽">▶</button>
+    </div>
+
+    <p class="help">방향키 또는 WASD를 누르고 있으면 부드럽게 이동 · R 다시 시작 · N 새 미로 · F 안개 켜기/끄기<br>
+      처음 움직이면 타이머가 시작돼요. 🟠 내 위치 → 🟢 출구</p>
+  </main>
+
+  <div id="win" class="overlay" hidden>
+    <div class="dialog">
+      <h2>🎉 탈출 성공!</h2>
+      <p id="win-msg"></p>
+      <button id="win-new" class="btn primary">새 미로</button>
+    </div>
+  </div>
+
+  <script src="maze.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

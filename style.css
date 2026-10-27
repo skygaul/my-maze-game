@@ -1,0 +1,117 @@
+:root {
+  --bg: #0b0f1a;
+  --panel: #151b2b;
+  --text: #e6ebf5;
+  --muted: #8b97ad;
+  --line: #2a3350;
+  --accent: #ffb347;
+  --accent-soft: #2a2236;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Pretendard", "Malgun Gothic", system-ui, -apple-system, sans-serif;
+}
+
+.app {
+  --size: min(92vw, 560px);
+  width: var(--size);
+  margin: 0 auto;
+  padding: 20px 0 40px;
+}
+
+header { text-align: center; margin-bottom: 12px; }
+h1 { margin: 0; font-size: 28px; letter-spacing: 3px; }
+.tagline { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.field { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+select {
+  font: inherit;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+}
+
+.btn {
+  font: inherit;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+.btn:hover { background: #1d2540; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #1a1205; font-weight: 600; }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.stats b { color: var(--text); font-variant-numeric: tabular-nums; }
+
+canvas {
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  touch-action: none;
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-areas: ". up ." "left down right";
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+.dpad .btn { height: 52px; font-size: 18px; touch-action: none; user-select: none; }
+#d-up { grid-area: up; }
+#d-left { grid-area: left; }
+#d-down { grid-area: down; }
+#d-right { grid-area: right; }
+
+.help { margin-top: 16px; color: var(--muted); font-size: 12px; text-align: center; line-height: 1.7; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay[hidden] { display: none; }
+.dialog {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 28px 32px;
+  border-radius: 14px;
+  text-align: center;
+  max-width: 90vw;
+  line-height: 1.7;
+}
+.dialog h2 { margin: 0 0 8px; }
+#win-msg { white-space: pre-line; margin: 0 0 16px; }
